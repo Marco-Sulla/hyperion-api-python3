@@ -68,6 +68,7 @@ from datetime import datetime
 from functools import partial
 import logging
 import hashlib
+from .version import __version__ as _LIBRARY_VERSION
 logger = logging.getLogger(__name__)
 logger.addHandler(logging.NullHandler())
 
@@ -79,8 +80,6 @@ STREAM_SPECTRA_PORT = 51973
 STREAM_SENSORS_PORT = 51974
 
 SUCCESS = 0
-
-_LIBRARY_VERSION = '2.0.3.1'
 
 HyperionResponse = namedtuple('HyperionResponse', 'message content')
 HyperionResponse.__doc__ += "A namedtuple object that encapsulates responses returned from a Hyperion Instrument"
@@ -2049,4 +2048,24 @@ class AsyncHyperion(object):
         await self._execute_command('#saveSensors')
 
 
-
+__all__ = (
+    "COMMAND_PORT", 
+    "STREAM_PEAKS_PORT", 
+    "STREAM_SPECTRA_PORT", 
+    "STREAM_SENSORS_PORT",
+    "HyperionResponse", 
+    "HPeakOffsets", 
+    "NetworkSettings", 
+    HCommTCPClient.__name__, 
+    HCommTCPStreamer.__name__, 
+    HCommTCPSensorStreamer.__name__, 
+    HCommTCPPeaksStreamer.__name__, 
+    HCommTCPSpectrumStreamer.__name__, 
+    HACQSensorData.__name__, 
+    HACQPeaksData.__name__, 
+    HACQSpectrumData.__name__, 
+    HPeakDetectionSettings.__name__, 
+    HyperionError.__name__, 
+    Hyperion.__name__, 
+    AsyncHyperion.__name__, 
+)
